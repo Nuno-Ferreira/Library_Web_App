@@ -14,4 +14,4 @@ class UserProfile(models.Model):
 
     @property
     def books(self):
-        return Book.objects.filter(user=self.user)
+        return Book.objects.filter(user=self)

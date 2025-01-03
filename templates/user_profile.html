@@ -75,16 +75,18 @@
 
         <div class="book-list">
             <h2>Books Assigned:</h2>
-            {% if user_profile.books.all %}
-                {% for book in user_profile.books.all %}
-                    <div class="book-item">
+            {% if user_profile.books %}
+            <ul>
+                {% for book in user_profile.books %}
+                    <li class="book-item">
                         <strong>{{ book.title }}</strong> by {{ book.author }}
                         <p>{{ book.description }}</p>
-                    </div>
+                    </li>
                 {% endfor %}
-            {% else %}
-                <p>No books assigned.</p>
-            {% endif %}
+            </ul>
+        {% else %}
+            <p>No books assigned.</p>
+        {% endif %}
         </div>
     </section>
     <footer>

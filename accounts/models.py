@@ -15,9 +15,3 @@ class UserProfile(models.Model):
     @property
     def books(self):
         return Book.objects.filter(user=self.user)
-
-    def create_user(self, username, email, password):
-        user = User.objects.create_user(username=username, email=email, password=password)
-        self.user = user
-        self.save()
-        return user

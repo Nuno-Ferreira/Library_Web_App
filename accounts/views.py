@@ -7,9 +7,11 @@ from django.contrib.auth.models import User
 def users_index(request):
     return render(request, "templates/users_index.html", {"users": UserProfile.objects.all()})
 
-def profile_view(request):
+def profile_view(request, user_id):
     if request.user.is_authenticated:
-        return render(request, "templates/user_profile.html", {"user": request.user})
+        user = UserProfile.objects.get(id=user_id)
+
+        return render(request, "templates/user_profile.html", {"user": user})
     else:
         return redirect("HomePage")
 

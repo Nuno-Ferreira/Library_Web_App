@@ -5,9 +5,9 @@ from books.models import Book
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    age = models.IntegerField()
-    country = models.CharField(max_length=100)
-    bio = models.CharField(max_length=500)
+    age = models.IntegerField(blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True)
+    bio = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -15,3 +15,9 @@ class UserProfile(models.Model):
     @property
     def books(self):
         return Book.objects.filter(user=self.user)
+
+    def create_user(self, username, email, password):
+        user = User.objects.create_user(username=username, email=email, password=password)
+        self.user = user
+        self.save()
+        return user

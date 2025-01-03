@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+
+from accounts.models import UserProfile
 
 def login_view(request):
     if request.method == "POST":
@@ -25,7 +26,7 @@ def signup_view(request):
 
         if password == confirm_password:
             try:
-                user = User.objects.create_user(username=username, email=email, password=password)
+                user = UserProfile.objects.create_user(username=username, email=email, password=password)
                 user.save()
                 login(request, user)
                 return redirect("HomePage")

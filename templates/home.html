@@ -61,6 +61,21 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        .book-list {
+            margin: 0 auto;
+            max-width: 600px;
+            text-align: left;
+        }
+        .book-list h2 {
+            text-align: center;
+        }
+        .book-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -80,6 +95,15 @@
     </header>
     <section>
         <p>Explore the library and see what users are reading.</p>
+        <div class="book-list">
+            <h2>Books</h2>
+            {% for book in books %}
+                <div class="book-item">
+                    <p><strong>{{ book.title }}</strong> by {{ book.author }}</p>
+                    <a href="/books/{{ book.id }}/">View details</a>
+                </div>
+            {% endfor %}
+        </div>
         <div class="user-list">
             <h2>Users</h2>
             {% for profile in user_profiles %}

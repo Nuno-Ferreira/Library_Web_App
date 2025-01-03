@@ -5,9 +5,10 @@ from accounts.models import UserProfile
 from books.models import Book
 
 def homepage(request):
-    users = UserProfile.objects.all()
+    users = UserProfile.objects.order_by("user__username")[:3]
+    books = Book.objects.filter(user=None)[:3]
     
-    return render(request, "templates/home.html", {"user_profiles": users})
+    return render(request, "templates/home.html", {"user_profiles": users, "books": books})
 
 def books_index(request):
     available_books = Book.objects.filter(user=None)

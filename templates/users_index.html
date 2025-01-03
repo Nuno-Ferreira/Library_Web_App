@@ -80,7 +80,19 @@
                     <tr>
                         <td>{{ profile.user.username }}</td>
                         <td>{{ profile.user.email }}</td>
-                        <td>Books</td>
+                        <td>
+                            {% if profile.books %}
+                            <ul>
+                                {% for book in profile.books %}
+                                    <li class="book-item">
+                                        <strong>{{ book.title }}</strong> by {{ book.author }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No books assigned.</p>
+                        {% endif %}
+                        </td>
                         <td>
                             {% if user.is_authenticated %}
                                 <a href="/users/{{ user.id }}">View Profile</a>

@@ -22,9 +22,10 @@ def book_detail(request, book_id):
 @login_required
 def assign_book(request, book_id):
     book = Book.objects.get(id=book_id)
+    user_profile = UserProfile.objects.get(user=request.user)
 
     if not book.user:
-        book.user = request.user
+        book.user = user_profile
         book.save()
 
     return render(request, "templates/book_detail.html", {"book": book})

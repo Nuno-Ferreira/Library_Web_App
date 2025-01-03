@@ -11,7 +11,7 @@ def profile_view(request, user_id):
     if request.user.is_authenticated:
         user = UserProfile.objects.get(id=user_id)
 
-        return render(request, "templates/user_profile.html", {"user": user})
+        return render(request, "templates/user_profile.html", {"user_profile": user})
     else:
         return redirect("HomePage")
 

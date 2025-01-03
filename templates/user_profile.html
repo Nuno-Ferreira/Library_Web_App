@@ -58,6 +58,7 @@
         <nav>
             <a href="/">Home</a>
             <a href="/books">Book Index</a>
+            <a href="/users">User Index</a>
             {% if user.is_authenticated %}
                 <span>Welcome, {{ user.username }}!</span>
                 <a href="/logout">Logout</a>

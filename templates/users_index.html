@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books Index - Library</title>
+    <title>User Index - Library</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@
 </head>
 <body>
     <header>
-        <h1>Book Index</h1>
+        <h1>User Index</h1>
         <nav>
             <a href="/">Home</a>
             <a href="/books">Book Index</a>
@@ -64,26 +64,25 @@
         </nav>
     </header>
     <section>
-        <p>Here you can check out all the books that we have available in the library.</p>
+        <p>Here you can check out all the users that are registered in this library.</p>
     </section>
     <section>
         <table style="margin: 0 auto;">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Books</th>
                 </tr>
             </thead>
             <tbody>
-                {% for book in books %}
+                {% for profile in users %}
                     <tr>
-                        <td>{{ book.title }}</td>
-                        <td>{{ book.author }}</td>
-                        <td>{{ book.description }}</td>
+                        <td>{{ profile.user.username }}</td>
+                        <td>{{ profile.user.email }}</td>
+                        <td>Books</td>
                         <td>
-                            <a href="/books/{{ book.id }}">Show</a>
+                            <a href="/users/{{ user.id }}">View Profile</a>
                         </td>
                     </tr>
                 {% endfor %}

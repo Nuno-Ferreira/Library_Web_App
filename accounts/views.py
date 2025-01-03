@@ -1,7 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
+from .models import UserProfile
 from django.contrib.auth.models import User
+
+def users_index(request):
+    return render(request, "templates/users_index.html", {"users": UserProfile.objects.all()})
+
+def profile_view(request):
+    if request.user.is_authenticated:
+        return render(request, "templates/user_profile.html", {"user": request.user})
+    else:
+        return redirect("HomePage")
 
 def login_view(request):
     if request.method == "POST":

@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+from accounts.models import UserProfile
 from books.models import Book
 
 def homepage(request):
-    return render(request, "templates/home.html")
+    users = UserProfile.objects.all()
+    
+    return render(request, "templates/home.html", {"user_profiles": users})
 
 def books_index(request):
     available_books = Book.objects.filter(user=None)

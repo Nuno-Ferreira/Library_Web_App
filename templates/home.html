@@ -18,6 +18,21 @@
             padding: 10px 20px;
             text-align: center;
         }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
         section {
             padding: 20px;
             text-align: center;
@@ -36,10 +51,19 @@
 <body>
     <header>
         <h1>Welcome to the Library</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/books">Book Index</a>
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }}!</span>
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+            {% endif %}
+        </nav>
     </header>
     <section>
-        <p>This is the home page for the library. Here you can check out any books you have taken out and </p>
-        <a href="/books">Go to Book Index</a>
+        <p>This is the home page for the library. Here you can check out any books you have taken out and check what other users are reading at the moment.</p>
     </section>
     <footer>
         &copy; 2025 Library. All rights reserved.

@@ -6,7 +6,7 @@ def homepage(request):
     return render(request, "templates/home.html")
 
 def books_index(request):
-    available_books = Book.objects.all()
+    available_books = Book.objects.filter(user=None)
 
     return render(request, "templates/book_index.html", {"books": available_books})
 

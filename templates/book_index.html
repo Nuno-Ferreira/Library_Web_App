@@ -41,6 +41,30 @@
         <p>Here you can check out all the books that we have available in the library.</p>
         <a href="/">Go back to Home Page</a>
     </section>
+    <section>
+        <table style="margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.description }}</td>
+                        <td>
+                            <a href="/books/{{ book.id }}">Show</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
     <footer>
         &copy; 2025 Library. All rights reserved.
     </footer>
